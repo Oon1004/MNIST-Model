@@ -43,7 +43,7 @@ def main():
     model = DigitCNN().to(device)#cnn 모델을 생성 후 cpu나 gpu 장치로 이동
 
     optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
-    loss_fn = nn.CrossEntropyLoss()
+    loss_fn = nn.CrossEntropyLoss() 
     best_accuracy = 0.0
     history = {"train_loss": [], "train_accuracy": [], "valid_loss": [], "valid_accuracy": []}
 
@@ -51,7 +51,7 @@ def main():
         # 6. 학습: 순전파 → 손실 계산 → 역전파 → 파라미터 갱신을 수행한다.
         model.train()
         train_loss = correct = total = 0
-        for batch, (x, y) in enumerate(train_loader, start=1):
+        for batch, (x, y ) in enumerate(train_loader, start=1):
             optimizer.zero_grad()  # 이전 배치에서 계산된 기울기를 초기화한다.
             x, y = x.to(device), y.to(device)
             logits = model(x)
